@@ -1,6 +1,3 @@
-const ans = "APPLE";
-
-
 let index = 0;
 let attp = 0;
 
@@ -27,8 +24,13 @@ function appStart() {
         index = 0;
     }
 
-    const handleEnterKey = () => {
+    const handleEnterKey = async () => {
         let ansNum = 0;
+
+        //서버에서 정답을 받아오는 코드
+        const 응답 = await fetch("/answer")
+        const ans = await 응답.json();
+
         for(let i=0; i<5; i++) {
             const block = document.querySelector(`.board-block[data-index='${attp}${i}']`);
             const wrtText = block.innerText;
